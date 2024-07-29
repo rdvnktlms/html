@@ -1,0 +1,8 @@
+touch : dosya oluşturma (uzantı ver)
+clean :dizini temizleme
+config : tanımlama
+pwd : hangi klasörde olduğunu görme 
+cd : dosyalar arası geçiş
+cd .. : üst dosyaya geçme
+dc "dosya adı" : adı yazılan dosyaya geçiş
+mkdir : klasör oluşturma
