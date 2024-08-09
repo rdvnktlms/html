@@ -3,6 +3,20 @@ clean :dizini temizleme
 config : tanımlama
 pwd : hangi klasörde olduğunu görme 
 cd : dosyalar arası geçiş
+clear : ekranı temizler
 cd .. : üst dosyaya geçme
 dc "dosya adı" : adı yazılan dosyaya geçiş
 mkdir : klasör oluşturma
+git init : git komutlarını kullanmak için eklemen gerekir
+ls -a : bulunduğun klasördeki tüm dosyaları (gizli dahil) gösterir
+git status : localde staging area ya aktarılmamış dosyaları gösterir (farklılıkları görmek için)
+git add dosya adı : staging area ya dosya ekleme işlemi yapar (bu işlemi yaptıktan sonra commitlenmeye hazır olan dosya yeşil rengini alır)
+git add . : bütün dosyaları staging areaya atar
+git commit -m "yapılan işlem için mesaj" : commit işlemini gerçekleştirir
+git log : log tutar yani yaptığın şeyi gösterir
+git log --oneline : tek satır halinde kısaltılmış bilgiyi gösterir
+git checkout (istediğin commit numarası) -- . : önceki sürüme geçirir
+git diff : dosya içinde yapılan değişikliği gösterir
+git diff (dosya adı) : sadece verilen dosyanın içinde yapılan değişiklikleri gösterir
+git push : sunucuya veri göndermek ya da sunucuda ki veriyi almak için
+

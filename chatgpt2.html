@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 240px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sidebar .menu {
+            margin-top: 40px;
+        }
+
+        .menu-item {
+            display: block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            text-align: left;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upgrade-button {
+            background-color: #5a67d8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .overview {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .overview-item {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .overview-item:last-child {
+            margin-right: 0;
+        }
+
+        .pitch-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pitch-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .pitch-item:last-child {
+            border-bottom: none;
+        }
+
+        .edit-button {
+            background-color: #5a67d8;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .status {
+            font-weight: bold;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Pitch.io Logo">
+        </div>
+        <div class="menu">
+            <button class="menu-item">Dashboard</button>
+            <button class="menu-item">Editor</button>
+            <button class="menu-item">Leads</button>
+            <button class="menu-item">Settings</button>
+            <button class="menu-item">Preview</button>
+        </div>
+        <div class="upgrade">
+            <button class="upgrade-button">Upgrade</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1>Hi, Alyssa</h1>
+            <p>Ready to start your day with some pitch decks?</p>
+            <div class="user-info">
+                <span class="date">Monday, 02 March 2020</span>
+                <div class="user-profile">
+                    <span class="user-avatar">AJ</span>
+                    <span class="user-name">Alyssa Jones</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="overview">
+            <div class="overview-item open-rate">
+                <p>83%</p>
+                <span>Open Rate</span>
+            </div>
+            <div class="overview-item complete">
+                <p>77%</p>
+                <span>Complete</span>
+            </div>
+            <div class="overview-item unique-views">
+                <p>91</p>
+                <span>Unique Views</span>
+            </div>
+            <div class="overview-item total-views">
+                <p>126</p>
+                <span>Total Views</span>
+            </div>
+        </div>
+
+        <!-- Pitch List -->
+        <div class="pitch-list">
+            <div class="pitch-item">
+                <div class="pitch-info">
+                    <h2>Next in Fashion</h2>
+                    <p>Some description text goes here...</p>
+                    <span>10 Slides</span>
+                </div>
+                <div class="pitch-options">
+                    <span class="status">Public</span>
+                    <button class="edit-button">Edit</button>
+                </div>
+            </div>
+            <div class="pitch-item">
+                <div class="pitch-info">
+                    <h2>Digital Marketing Today</h2>
+                    <p>Some description text goes here...</p>
+                    <span>10 Slides</span>
+                </div>
+                <div class="pitch-options">
+                    <span class="status">Private</span>
+                    <button class="edit-button">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

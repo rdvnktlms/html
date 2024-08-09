@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #d75e5e;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #ba5ed6;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar a {
+      color: #333;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+    }
+    .sidebar a:hover {
+      background-color: #f1f1f1;
+    }
+    .content {
+      padding: 20px;
+    }
+    .header {
+      background-color: #ffd700;
+      padding: 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .overview {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .overview div {
+      flex: 1;
+      padding: 20px;
+      margin: 0 10px;
+      background-color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .overview div:first-child {
+      margin-left: 0;
+    }
+    .overview div:last-child {
+      margin-right: 0;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="d-flex">
+    <div class="sidebar p-3">
+      <h5>Pitch.io</h5>
+      <a href="#">Dashboard</a>
+      <a href="#">Editor</a>
+      <a href="#">Leads</a>
+      <a href="#">Settings</a>
+      <a href="#">Preview</a>
+    </div>
+    <div class="content flex-grow-1">
+      <div class="header d-flex align-items-center justify-content-between">
+        <h3>Hi, Alyssa</h3>
+        <div>
+          <img src="https://via.placeholder.com/40" alt="Profile Picture">
+          <span>Alyssa Jones</span>
+        </div>
+      </div>
+      <div class="overview">
+        <div>
+          <h5>83%</h5>
+          <p>Progress</p>
+        </div>
+        <div>
+          <h5>77%</h5>
+          <p>Complete</p>
+        </div>
+        <div>
+          <h5>91</h5>
+          <p>Usage Views</p>
+        </div>
+        <div>
+          <h5>126</h5>
+          <p>New Users</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Next in Fashion</h5>
+          <p class="card-text">Sell and present your new product, and trade up at office discount.</p>
+          <a href="#" class="btn btn-primary">View</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Digital Marketing Today</h5>
+          <p class="card-text">Sell and present your new product, and trade up at office discount.</p>
+          <a href="#" class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
