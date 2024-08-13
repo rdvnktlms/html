@@ -5,6 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--public anahtar style ı-->
+    <style>
+      /* Wrapper sınıfı ile stil uygulanıyor */
+      .wrapper {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0;
+        background-color: #f8f8f8;
+      }
+
+      .toggle-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .toggle-labels {
+        margin-right: 10px;
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+      }
+
+      .toggle-labels span {
+        display: none; /* Başlangıçta gizli */
+      }
+
+      .toggle-labels .public-label {
+        display: inline; /* "Public" varsayılan olarak gösteriliyor */
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #4caf50; /* Yeşil renk */
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(14px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+    </style>
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -14,27 +108,28 @@
   <body>
     <main class="container p-2">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <nav class="min-vh-100 bg-white">
-            <div
-              class="h-100 d-flex flex-column align-items-start justify-content-start px-4"
-            >
-              <div class="w-100 mb-3">
-                <img
-                  src="pitch.jpeg"
-                  class="img-fluid"
-                  alt="Logo"
-                  width="40"
-                  height="32"
-                />
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="align-items-center col">
+                  <img src="pitch.jpeg" alt="Logo" width="40" height="32" />
+                </div>
+                <div class="row align-items-center"><h3>Pitch.io</h3></div>
               </div>
               <div class="w-100">
                 <div
-                  class="rounded-3 bg-purple-50 d-inline-flex align-items-center justify-content-center p-2"
+                  class="rounded-3 d-inline-flex align-items-center justify-content-center p-2 container"
+                  style="background-color: rgb(247, 248, 253)"
                 >
-                  <div class="text-black fw-semibold p-1">
+                  <div
+                    class="text-black fw-semibold p-1 row align-items-center"
+                  >
                     <div>Create</div>
                     <div>New Pitch</div>
+                  </div>
+                  <div class="row justify-content-start">
+                    <i class="fa-solid fa-circle-plus"></i>
                   </div>
                   <div
                     class="h-10 aspect-square bg-purple-300 rounded-circle"
@@ -47,7 +142,9 @@
                     <div
                       class="h-4 aspect-square bg-black rounded-3 me-3"
                     ></div>
-                    <div>Dashboard</div>
+                    <div>
+                      <i class="fa-solid fa-table-columns p-3"></i>Dashboard
+                    </div>
                   </div>
 
                   <div
@@ -56,7 +153,9 @@
                     <div
                       class="h-4 aspect-square bg-black rounded-3 me-3"
                     ></div>
-                    <div>Editor</div>
+                    <div>
+                      <i class="fa-regular fa-pen-to-square p-3"></i>Editor
+                    </div>
                   </div>
 
                   <div
@@ -65,7 +164,7 @@
                     <div
                       class="h-4 aspect-square bg-black rounded-3 me-3"
                     ></div>
-                    <div>Loads</div>
+                    <div><i class="fa-solid fa-users p-3"></i>Leads</div>
                   </div>
 
                   <div
@@ -74,7 +173,7 @@
                     <div
                       class="h-4 aspect-square bg-black rounded-3 me-3"
                     ></div>
-                    <div>Settings</div>
+                    <div><i class="fa-solid fa-gear p-3"></i>Settings</div>
                   </div>
 
                   <div
@@ -83,48 +182,85 @@
                     <div
                       class="h-4 aspect-square bg-black rounded-3 me-3"
                     ></div>
-                    <div>Preview</div>
+                    <div>
+                      <i class="fa-regular fa-file-lines p-3"></i>Preview
+                    </div>
                   </div>
                 </div>
                 <div
-                  class="bg-purple-100 p-3 rounded-3 d-flex flex-column align-items-center justify-content-center"
+                  class="p-3 rounded-3 d-flex flex-column align-items-center justify-content-center"
+                  style="background-color: rgb(247, 247, 252)"
                 >
-                  <img
-                    src="desktop image.jpg"
-                    
-                    alt="Logo"
-                    width="100" height="100"
-                  />
+                  <img src="desktop.png" alt="Logo" width="100" height="100" />
                   <label class="text-black w-75 text-center"
-                    >adfjkasdjs nkfjnsadk fnnjkaedfnk</label
+                    >Upgrade to PRO for more features.</label
                   >
-                  <div
-                    class="bg-purple-500 w-75 p-3 rounded-3 text-center cursor-pointer hover:bg-purple-700"
+                  <button
+                    type="button"
+                    style="background-color: rgb(111, 98, 174)"
+                    class="btn btn-md"
                   >
-                    Update
-                  </div>
+                    Upgrade
+                  </button>
                 </div>
               </div>
             </div>
           </nav>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-10">
           <nav
             class="w-100 d-flex justify-content-between align-items-start px-3 py-2 bg-white"
           >
             <div class="d-flex flex-column align-items-center">
-              <div class="text-black w-100">Dashboard</div>
+              <div class="w-100 fw-bold">Dashboard</div>
               <div class="d-flex align-items-center">
-                <div class="text-purple-600 fw-medium me-1">Monday</div>
-                <div class="text-slate-500 text-sm">10 May 2023</div>
+                <div
+                  class="text-purple-600 fw-medium me-3"
+                  style="color: rgb(79, 62, 156)"
+                >
+                  <p id="date" class="py-3"></p>
+                  <script>
+                    var d = new Date();
+                    var gunler = [
+                      "Sunday",
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                    ];
+                    document.getElementById("date").innerHTML =
+                      gunler[d.getDay()];
+                  </script>
+                </div>
+                <div class="text-slate-500 text-sm">
+                  <p style="color: grey" id="zaman"></p>
+                  <script>
+                    function tarihSaat() {
+                      var date = new Date().toLocaleString("tr-TR");
+                      document.getElementById("zaman").innerHTML = date;
+                    }
+                    // her 1 saniyede tarihSaat fonksiyonunu yeniden çalıştır
+                    setInterval(tarihSaat, 1000);
+                  </script>
+                </div>
               </div>
             </div>
             <div class="d-flex align-items-center">
-              <div class="bg-red-300 rounded-3 w-10 h-10 me-3"></div>
-              <div class="bg-red-300 rounded-3 w-10 h-10 me-3"></div>
+              <div class="rounded-3 me-3">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div class="rounded-3 me-3">
+                <i class="fa-regular fa-bell"></i>
+              </div>
               <div class="d-flex align-items-center">
                 <div
-                  class="bg-purple-300 rounded-3 w-10 h-10 me-3 text-purple-800 d-flex align-items-center justify-content-center fw-semibold"
+                  class="rounded-3 me-2 d-flex align-items-center justify-content-center fw-semibold py-2 px-2"
+                  style="
+                    color: rgb(79, 62, 156);
+                    background-color: rgb(203, 193, 247);
+                  "
                 >
                   AJ
                 </div>
@@ -158,26 +294,34 @@
               </div>
             </div>
           </nav>
-          <main class="w-100 p-3">
+          <main class="w-100">
             <div
-              class="relative w-100 my-4 bg-purple-200 rounded-3 py-3 px-4 d-flex align-items-center justify-content-between"
+              class="relative w-100 my-5 rounded-3 py-3 px-4 d-flex align-items-center justify-content-between"
+              style="background-color: rgb(228, 219, 255)"
             >
-              <div>
+              <div class="p-5">
                 <div class="fs-1 fw-bold">Hi, Allysa</div>
-                <div>Ready to start your day with some pitch decks</div>
+                <div>Ready to start your day with some pitch decks?</div>
               </div>
-              <img src="women image.jpg" alt="Women Image" width="40" style="width: 33%; height: auto;"
-              height="32">
+              <img
+                src="women.jpg"
+                alt="Women Image"
+                width="40"
+                style="width: 33%; height: auto"
+                height="32"
+              />
             </div>
             <div class="w-100">
-              <div class="text-slate-400 mb-3">Overview</div>
+              <div class="mb-3" style="color: gray"><h5>Overview</h5></div>
               <div class="d-flex justify-content-stretch align-items-center">
                 <div
                   class="rounded-3 col me-2 bg-warning d-flex align-items-center justify-content-start"
                 >
                   <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
                   <div class="text-white ms-3">
-                    <div class="fw-semibold fs-3">83%</div>
+                    <div class="fw-semibold fs-3">
+                      <i class="fa-solid fa-chart-line"></i>83%
+                    </div>
                     <div>Progress</div>
                   </div>
                 </div>
@@ -186,7 +330,9 @@
                 >
                   <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
                   <div class="text-white ms-3">
-                    <div class="fw-semibold fs-3">77%</div>
+                    <div class="fw-semibold fs-3">
+                      <i class="fa-regular fa-circle-check"></i>77%
+                    </div>
                     <div>Complete</div>
                   </div>
                 </div>
@@ -195,8 +341,10 @@
                 >
                   <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
                   <div class="text-white ms-3">
-                    <div class="fw-semibold fs-3">91</div>
-                    <div>Usage Views</div>
+                    <div class="fw-semibold fs-3">
+                      <i class="fa-regular fa-star"></i>91
+                    </div>
+                    <div>Unique Views</div>
                   </div>
                 </div>
                 <div
@@ -204,24 +352,125 @@
                 >
                   <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
                   <div class="text-white ms-3">
-                    <div class="fw-semibold fs-3">126</div>
+                    <div class="fw-semibold fs-3">
+                      <i class="fa-regular fa-eye"></i>126
+                    </div>
                     <div>New Users</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="p-5">
-              <div class="card mb-3" style="max-width: 540px;">
+              <div
+                class="card border-light mb-3"
+                style="background-color: f8f8f8"
+              >
                 <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  <div class="col-md-2 grid gap-3">
+                    <img
+                      src="young-woman-jumping-isolated-yellow-wall_1368-41656.avif"
+                      class="p-2 rounded-2"
+                      alt="image"
+                      style="height: 100px; width: 120px"
+                    />
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                      <h5 class="card-title" style="color: rgb(57, 97, 229)">
+                        Next in Fashion
+                      </h5>
+                      <p class="card-text">
+                        Those who are at fault, those who misuse their duties,
+                        or act for pleasure, do so with bad intentions.
+                      </p>
+                      <p class="card-text">
+                        <small class="text-body-secondary"
+                          >Last updated 3 mins ago</small
+                        >
+                      </p>
                     </div>
+                  </div>
+                  <div class="col-md-2 row">
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="wrapper">
+                      <div class="toggle-container">
+                        <div class="toggle-labels">
+                          <span class="public-label">Public</span>
+                          <span class="private-label">Private</span>
+                        </div>
+                        <label class="switch">
+                          <input type="checkbox" checked />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <button class="col-md-4 btn d-flex">
+                      
+                      <i class="fa-solid fa-pencil"></i>
+                      
+                    </button>
+                    <button class="col-md-4 justify-content-between btn d-flex ">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                    
+                  </div>
+                </div>
+                <div class="row g-0">
+                  <div class="col-md-2 grid gap-3">
+                    <img
+                      src="mor adam.png"
+                      class="p-2 rounded-2"
+                      alt="image"
+                      style="height: 100px; width: 120px"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title" style="color: rgb(57, 97, 229)">
+                        Digital Marketing Today
+                      </h5>
+                      <p class="card-text">
+                        Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                      </p>
+                      <p class="card-text">
+                        <small class="text-body-secondary"
+                          >10 Slides</small
+                        >
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-2 row">
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="wrapper">
+                      <div class="toggle-container">
+                        <div class="toggle-labels">
+                          <span class="public-label">Public</span>
+                          <span class="private-label">Private</span>
+                        </div>
+                        <label class="switch">
+                          <input type="checkbox" checked />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <button class="col-md-4 btn d-flex">
+                      
+                      <i class="fa-solid fa-pencil"></i>
+                      
+                    </button>
+                    <button class="col-md-4 justify-content-between btn d-flex ">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                    
                   </div>
                 </div>
               </div>
@@ -230,6 +479,25 @@
         </div>
       </div>
     </main>
+    <script>
+      const toggle = document.querySelector(".switch input");
+      const publicLabel = document.querySelector(".public-label");
+      const privateLabel = document.querySelector(".private-label");
+
+      publicLabel.style.display = "inline";
+      privateLabel.style.display = "none";
+
+      toggle.addEventListener("change", function () {
+        if (this.checked) {
+          publicLabel.style.display = "inline";
+          privateLabel.style.display = "none";
+        } else {
+          publicLabel.style.display = "none";
+          privateLabel.style.display = "inline";
+        }
+      });
+    </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
