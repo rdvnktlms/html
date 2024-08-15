@@ -18,5 +18,5 @@ git log --oneline : tek satır halinde kısaltılmış bilgiyi gösterir
 git checkout (istediğin commit numarası) -- . : önceki sürüme geçirir
 git diff : dosya içinde yapılan değişikliği gösterir
 git diff (dosya adı) : sadece verilen dosyanın içinde yapılan değişiklikleri gösterir
-git push : sunucuya veri göndermek ya da sunucuda ki veriyi almak için
+git push -u origin master: sunucuya veri göndermek ya da sunucuda ki veriyi almak için
 
