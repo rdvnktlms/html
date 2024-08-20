@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--public anahtar style ı-->
+    <style>
+      .wrapper {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0;
+        background-color: white;
+      }
+
+      .toggle-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .toggle-labels {
+        margin-right: 10px;
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+      }
+
+      .toggle-labels span {
+        display: none;
+      }
+
+      .toggle-labels .public-label {
+        display: inline;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: #4f3e9c;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: whitesmoke;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(14px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      .hover-nav:hover {
+        color: rgb(111, 98, 174);
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="d-flex">
+      <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+        <nav class="min-vh-100 bg-white navbar-expand-md">
+          <div class="container-liquid">
+            <div class="row align-items-center col-sm-2">
+              <div class="align-items-center col">
+                <img src="pitch.jpeg" alt="Logo" width="40" height="32" />
+              </div>
+              <div class="row align-items-center"><h3>Pitch.io</h3></div>
+            </div>
+            <div class="w-100">
+
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-plus p-2"></i>Create New Pitch</a>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-table-columns p-2"></i>Dashboard</a>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa-regular fa-pen-to-square p-2"></i>Editor</a>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-users p-2"></i>Leads</a>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-gear p-2"></i>Settings</a>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa-regular fa-file-lines p-2"></i>Preview</a>
+  <a href="#" class="list-group-item list-group-item-action disable bg-light text-center p-4">
+
+ 				<img src="desktop.png" alt="Logo" width="100" height="100" />
+                <label class="text-black w-75 text-center">Upgrade to PRO for more features.</label>
+				<a href="#" class="btn btn-info">Upgrade</a>
+
+  </a>
+
+</div>
+
+
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="col-sm-10 align-items-center container">
+        <nav
+          class="w-100 d-flex justify-content-between align-items-start px-3 py-2 bg-white"
+        >
+          <div class="d-flex flex-column align-items-center">
+            <div class="w-100 fw-bold">Dashboard</div>
+            <div class="d-flex align-items-center">
+              <div
+                class="text-purple-600 fw-medium me-3"
+                style="color: rgb(79, 62, 156)"
+              >
+                <p id="date" class="py-3"></p>
+                <script>
+                  var d = new Date();
+                  var gunler = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ];
+                  document.getElementById("date").innerHTML =
+                    gunler[d.getDay()];
+                </script>
+              </div>
+              <div class="text-slate-500 text-sm">
+                <p style="color: grey" id="zaman"></p>
+                <script>
+                  function tarihSaat() {
+                    var date = new Date().toLocaleString("tr-TR");
+                    document.getElementById("zaman").innerHTML = date;
+                  }
+                  // her 1 saniyede tarihSaat fonksiyonunu yeniden çalıştır
+                  setInterval(tarihSaat, 1000);
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="rounded-3 me-3">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="rounded-3 me-3">
+              <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="d-flex align-items-center">
+              <div
+                class="rounded-3 me-2 d-flex align-items-center justify-content-center fw-semibold py-2 px-2"
+                style="
+                  color: rgb(79, 62, 156);
+                  background-color: rgb(203, 193, 247);
+                "
+              >
+                AJ
+              </div>
+              <div class="dropdown">
+                <button
+                  class="btn btn-transparent dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Alice Johnson
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <li><a class="dropdown-item active" href="#">Action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <main class="w-100">
+          <div
+            class="relative w-100 my-5 rounded-5 py-3 px-4 d-flex align-items-center justify-content-between"
+            style="background-color: rgb(228, 219, 255)"
+          >
+            <div class="p-5">
+              <div class="fs-1 fw-bold">Hi, Allysa</div>
+              <div>Ready to start your day with some pitch decks?</div>
+            </div>
+            <img
+              src="women.jpg"
+              alt="Women Image"
+              width="40"
+              style="width: 33%; height: auto"
+              height="32"
+              class="rounded-3"
+            />
+          </div>
+          <div class="w-100">
+            <div class="mb-3" style="color: gray"><h5>Overview</h5></div>
+            <div class="d-flex">
+              <div class="rounded-3 col-md-3 me-2" style="background-color: #f2cc5b;">
+                <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
+                <div class="text-white ms-3 row">
+                  <div class="fw-semibold fs-3 col-md-3 row rounded-5">
+                    <div class="align-items-center align-self-center">
+                      <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <h4>%83 <br />Open Rate</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-3 col-md-3 mx-2 " style="background-color: #503e9d;">
+                <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
+                <div class="text-white ms-3 row">
+                  <div class="fw-semibold fs-3 col-md-3 row">
+                    <div class="align-items-center align-self-center">
+                      <i class="fa-regular fa-circle-check"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <h4>%77 <br />Complete</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-3 col-md-3 mx-1 " style="background-color: #eb6297;">
+                <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
+                <div class="text-white ms-3 row">
+                  <div class="fw-semibold fs-3 col-md-2 align-self-center">
+                    <div class="align-items-center py-2">
+                      <i class="fa-regular fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <h4>
+                      91 <br />
+                      Unique Views
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-3 col-md-3 ms-2 " style="background-color: #ccc1eb;">
+                <div class="bg-danger rounded-3 w-4 h-4 me-3"></div>
+                <div class="text-white ms-3 row">
+                  <div class="fw-semibold fs-3 col-md-2 align-self-center">
+                    <div class="start-0 py-2">
+                      <i class="fa-regular fa-eye"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <h4>
+                      126 <br />
+                      Total Views
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div
+              class="card border-light mb-3 rounded-3"
+              
+            >
+              <div class="row g-0 rounded-3" >
+                <div class="col-md-2 grid gap-3">
+                  <img
+                    src="young-woman-jumping-isolated-yellow-wall_1368-41656.avif"
+                    class="p-2 rounded-2"
+                    alt="image"
+                    style="height: 100px; width: 120px"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: rgb(57, 97, 229)">
+                      Next in Fashion
+                    </h5>
+                    <p class="card-text">
+                      Those who are at fault, those who misuse their duties, or
+                      act for pleasure, do so with bad intentions.
+                    </p>
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Last updated 3 mins ago</small
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-2 row">
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="wrapper">
+                    <div class="toggle-container">
+                      <div class="toggle-labels">
+                        <span class="public-label">Public</span>
+                        <span class="private-label">Private</span>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <button class="col-md-4 btn d-flex">
+                    <i class="fa-solid fa-pencil"></i>
+                  </button>
+                  <button class="col-md-4 justify-content-between btn d-flex">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="row g-0 rounded-3" style="background-color: #f8f8f8">
+                <div class="col-md-2 grid gap-3">
+                  <img
+                    src="mor adam.png"
+                    class="p-2 rounded-2"
+                    alt="image"
+                    style="height: 100px; width: 120px"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: rgb(57, 97, 229)">
+                      Digital Marketing Today
+                    </h5>
+                    <p class="card-text">
+                      Sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p class="card-text">
+                      <small class="text-body-secondary">10 Slides</small>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-2 row">
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="wrapper">
+                    <div class="toggle-container">
+                      <div class="toggle-labels">
+                        <span class="public-label">Public</span>
+                        <span class="private-label">Private</span>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block"></div>
+                  <button class="col-md-4 btn d-flex">
+                    <i class="fa-solid fa-pencil"></i>
+                  </button>
+                  <button class="col-md-4 justify-content-between btn d-flex">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const toggle = document.querySelector(".switch input");
+      const publicLabel = document.querySelector(".public-label");
+      const privateLabel = document.querySelector(".private-label");
+
+      publicLabel.style.display = "inline";
+      privateLabel.style.display = "none";
+
+      toggle.addEventListener("change", function () {
+        if (this.checked) {
+          publicLabel.style.display = "inline";
+          privateLabel.style.display = "none";
+        } else {
+          publicLabel.style.display = "none";
+          privateLabel.style.display = "inline";
+        }
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
